@@ -15,6 +15,19 @@ jobs:
       - run: npm install -g yarn
       - run: yarn install --frozen-lockfile
 
+  publish-npm:
+    needs: install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
   publish-gpr:
     needs: install
     runs-on: ubuntu-latest
