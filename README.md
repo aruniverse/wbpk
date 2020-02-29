@@ -1,1 +1,3 @@
-# wbpk
+# wbpkd
+
+Just trying to learn webpack.
